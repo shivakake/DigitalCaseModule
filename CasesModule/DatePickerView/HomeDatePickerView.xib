@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeDatePickerView" customModule="WenoiUI" customModuleProvider="target">
+            <connections>
+                <outlet property="datePickerView" destination="hDV-Wa-Mhr" id="3JI-S9-t0U"/>
+                <outlet property="popupView" destination="fV0-Sd-NSa" id="gDB-us-WYm"/>
+                <outlet property="saveButton" destination="bSM-DJ-HfN" id="MC3-1j-xDR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Aq-0A-j7M" userLabel="TranslucentView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fV0-Sd-NSa">
+                    <rect key="frame" x="0.0" y="313.5" width="414" height="476.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSM-DJ-HfN">
+                            <rect key="frame" x="107" y="401.5" width="200" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="8Vb-Vd-8E6"/>
+                                <constraint firstAttribute="height" constant="50" id="x0j-lW-Q7r"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <state key="normal" title="Select Date">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                            </variation>
+                            <connections>
+                                <action selector="onSaveButtonTapped:" destination="-1" eventType="touchUpInside" id="uQX-WN-hBx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcz-0T-ifU">
+                            <rect key="frame" x="369" y="15" width="25" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="fvD-fc-JLA"/>
+                            </constraints>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <state key="normal" image="chevron.down" catalog="system"/>
+                            <connections>
+                                <action selector="onDownArrowClick:" destination="-1" eventType="touchUpInside" id="m8d-Ck-SKz"/>
+                            </connections>
+                        </button>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-Wa-Mhr">
+                            <rect key="frame" x="39" y="62" width="336" height="324.5"/>
+                        </datePicker>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="hDV-Wa-Mhr" firstAttribute="top" secondItem="zcz-0T-ifU" secondAttribute="bottom" constant="25" id="1Ln-Qv-Ufd"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hDV-Wa-Mhr" secondAttribute="trailing" id="3g9-du-myW"/>
+                        <constraint firstItem="bSM-DJ-HfN" firstAttribute="top" secondItem="hDV-Wa-Mhr" secondAttribute="bottom" constant="15" id="Vyg-Td-fcI"/>
+                        <constraint firstItem="bSM-DJ-HfN" firstAttribute="centerX" secondItem="fV0-Sd-NSa" secondAttribute="centerX" id="Xeu-pJ-Ivc"/>
+                        <constraint firstAttribute="trailing" secondItem="zcz-0T-ifU" secondAttribute="trailing" constant="20" id="ZGL-lB-vie"/>
+                        <constraint firstAttribute="bottom" secondItem="bSM-DJ-HfN" secondAttribute="bottom" constant="25" id="ZXR-4i-u9I"/>
+                        <constraint firstItem="hDV-Wa-Mhr" firstAttribute="centerX" secondItem="fV0-Sd-NSa" secondAttribute="centerX" id="gh1-sS-d5Y"/>
+                        <constraint firstItem="zcz-0T-ifU" firstAttribute="top" secondItem="fV0-Sd-NSa" secondAttribute="top" constant="15" id="lNX-En-hbF"/>
+                        <constraint firstItem="hDV-Wa-Mhr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fV0-Sd-NSa" secondAttribute="leading" id="sSu-ap-F3o"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fV0-Sd-NSa" secondAttribute="trailing" id="3Zw-Aw-Cz6"/>
+                <constraint firstAttribute="bottom" secondItem="fV0-Sd-NSa" secondAttribute="bottom" id="8d2-pe-2tD"/>
+                <constraint firstAttribute="trailing" secondItem="8Aq-0A-j7M" secondAttribute="trailing" id="Ats-6K-cjH"/>
+                <constraint firstItem="fV0-Sd-NSa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CP6-t0-mMO"/>
+                <constraint firstItem="8Aq-0A-j7M" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hit-ub-gOr"/>
+                <constraint firstItem="8Aq-0A-j7M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JM2-ER-kD9"/>
+                <constraint firstAttribute="bottom" secondItem="8Aq-0A-j7M" secondAttribute="bottom" id="dCd-2H-8jS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="76.811594202898561" y="30.133928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

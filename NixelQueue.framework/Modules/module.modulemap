@@ -1,0 +1,11 @@
+framework module NixelQueue {
+  umbrella header "NixelQueue.h"
+
+  export *
+  module * { export * }
+}
+
+module NixelQueue.Swift {
+    header "NixelQueue-Swift.h"
+    requires objc
+}

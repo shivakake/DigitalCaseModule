@@ -1,0 +1,248 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name NixelQueue
+import CommonCrypto
+import Foundation
+@_exported import NixelQueue
+import Swift
+public class ClsStreamCryptor {
+  public enum Operation {
+    case encrypt
+    case decrypt
+    public static func == (a: NixelQueue.ClsStreamCryptor.Operation, b: NixelQueue.ClsStreamCryptor.Operation) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum ValidKeySize {
+    case fixed(Swift.Int)
+    case discrete([Swift.Int])
+    case range(Swift.Int, Swift.Int)
+  }
+  public enum Mode {
+    case ECB
+    case CBC
+    case CFB
+    case CTR
+    case OFB
+    case RC4
+    case CFB8
+    public static func == (a: NixelQueue.ClsStreamCryptor.Mode, b: NixelQueue.ClsStreamCryptor.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Padding {
+    case NoPadding
+    case PKCS7Padding
+    public static func == (a: NixelQueue.ClsStreamCryptor.Padding, b: NixelQueue.ClsStreamCryptor.Padding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Algorithm {
+    case aes
+    case des
+    case tripleDES
+    case cast
+    case rc2
+    case blowfish
+    public func blockSize() -> Swift.Int
+    public static func == (a: NixelQueue.ClsStreamCryptor.Algorithm, b: NixelQueue.ClsStreamCryptor.Algorithm) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  open var status: NixelQueue.Status
+  public convenience init(operation: NixelQueue.ClsStreamCryptor.Operation, algorithm: NixelQueue.ClsStreamCryptor.Algorithm, mode: NixelQueue.ClsStreamCryptor.Mode, padding: NixelQueue.ClsStreamCryptor.Padding, key: [Swift.UInt8], iv: [Swift.UInt8])
+  public init(operation: NixelQueue.ClsStreamCryptor.Operation, algorithm: NixelQueue.ClsStreamCryptor.Algorithm, mode: NixelQueue.ClsStreamCryptor.Mode, padding: NixelQueue.ClsStreamCryptor.Padding, keyBuffer: Swift.UnsafeRawPointer, keyByteCount: Swift.Int, ivBuffer: Swift.UnsafeRawPointer, ivByteCount: Swift.Int)
+  @discardableResult
+  open func update(bufferIn: Swift.UnsafeRawPointer, byteCountIn: Swift.Int, bufferOut: Swift.UnsafeMutableRawPointer, byteCapacityOut: Swift.Int, byteCountOut: inout Swift.Int) -> NixelQueue.Status
+  @discardableResult
+  open func final(bufferOut: Swift.UnsafeMutableRawPointer, byteCapacityOut: Swift.Int, byteCountOut: inout Swift.Int) -> NixelQueue.Status
+  open func getOutputLength(inputByteCount: Swift.Int, isFinal: Swift.Bool = false) -> Swift.Int
+  @objc deinit
+}
+@objc public class ClsHeaderQueue : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool {
+    @objc get
+  }
+  public var strObjectId: Swift.String?
+  public var strObjType: Swift.String?
+  public var strVerifyId: Swift.String?
+  public var strStatus: Swift.String?
+  public var strOperation: Swift.String?
+  public var intAttempt: Swift.Int?
+  public var strApiName: Swift.String?
+  public var isFileUploading: Swift.Bool?
+  public var strFilePath: Swift.String?
+  public var objHashMapData: Foundation.NSDictionary?
+  public var objHashMapExtra: Foundation.NSDictionary?
+  public var strFileName: Swift.String?
+  public var arrFiles: [NixelQueue.ClsFileUpload]?
+  public var blIsDirect: Swift.Bool?
+  public var blEncrypt: Swift.Bool?
+  public var strEncryptionKey: Swift.String?
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public init?(coder aDecoder: Foundation.NSCoder)
+  public init(strObjectId: Swift.String, strObjType: Swift.String, strVerifyId: Swift.String, strStatus: Swift.String, strOperation: Swift.String, strApiName: Swift.String, isFileUploading: Swift.Bool, strFilePath: Swift.String, strFileName: Swift.String, objHashMapData: Foundation.NSDictionary, objHashMapExtra: Foundation.NSDictionary, arrFiles: [NixelQueue.ClsFileUpload], blIsDirect: Swift.Bool, blEncrypt: Swift.Bool, strEncryptionKey: Swift.String)
+  public func getIsFileUploading() -> Swift.Bool
+  public func getBlIsDirect() -> Swift.Bool
+  public func setBlIsDirect(blIsDirect: Swift.Bool)
+  public func getIntAttempt() -> Swift.Int
+  public func setIntAttempt(intAttempt: Swift.Int)
+  public func incrementAttempt()
+  public func getStrFilePath() -> Swift.String
+  public func getStrFileName() -> Swift.String
+  public func setStrFilePath(strFilePath: Swift.String)
+  public func setStrFileName(strFileName: Swift.String)
+  public func getStrVerifyId() -> Swift.String
+  public func getStrObjectId() -> Swift.String
+  public func getStrObjType() -> Swift.String
+  public func getStrStatus() -> Swift.String
+  public func getStrOperation() -> Swift.String
+  public func getStrApiName() -> Swift.String
+  public func getObjHashMapData() -> Foundation.NSDictionary
+  public func getObjHashMapExtra() -> Foundation.NSDictionary
+  public func getBlEncrypt() -> Swift.Bool
+  public func setBlEncrypt(blEncrypt: Swift.Bool)
+  public func getStrEncryptionKey() -> Swift.String
+  public func setStrEncryptionKey(strEncryptionKey: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public func zeroPad(array: [Swift.UInt8], blockSize: Swift.Int) -> [Swift.UInt8]
+public func zeroPad(string: Swift.String, blockSize: Swift.Int) -> [Swift.UInt8]
+@_hasMissingDesignatedInitializers public class ClsPBKDF {
+  public enum PseudoRandomAlgorithm {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public static func == (a: NixelQueue.ClsPBKDF.PseudoRandomAlgorithm, b: NixelQueue.ClsPBKDF.PseudoRandomAlgorithm) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  open class func deriveKey(password: Swift.String, salt: Swift.String, prf: NixelQueue.ClsPBKDF.PseudoRandomAlgorithm, rounds: Darwin.uint, derivedKeyLength: Swift.UInt) -> [Swift.UInt8]
+  open class func deriveKey(password: Swift.String, salt: [Swift.UInt8], prf: NixelQueue.ClsPBKDF.PseudoRandomAlgorithm, rounds: Darwin.uint, derivedKeyLength: Swift.UInt) -> [Swift.UInt8]
+  @objc deinit
+}
+public enum Status : CommonCrypto.CCCryptorStatus, Swift.CustomStringConvertible, Swift.Error {
+  case success
+  case paramError
+  case bufferTooSmall
+  case memoryFailure
+  case alignmentError
+  case decodeError
+  case unimplemented
+  case overflow
+  case rngFailure
+  public func toRaw() -> CommonCrypto.CCCryptorStatus
+  public var description: Swift.String {
+    get
+  }
+  public static func fromRaw(status: CommonCrypto.CCCryptorStatus) -> NixelQueue.Status?
+  public init?(rawValue: CommonCrypto.CCCryptorStatus)
+  public typealias RawValue = CommonCrypto.CCCryptorStatus
+  public var rawValue: CommonCrypto.CCCryptorStatus {
+    get
+  }
+}
+public class ClsFileEncryptDecrypt {
+  public init()
+  public func encrypt(strInputFilePath: Swift.String, strOutputFilePath: Swift.String, strPassword: Swift.String)
+  public func decrypt(strInputFilePath: Swift.String, strOutputFilePath: Swift.String, strPassword: Swift.String)
+  @objc deinit
+}
+public protocol QueueManagerDelegate : AnyObject {
+  func onOperationResult(objResponseDict: Foundation.NSDictionary, objHeaderQueue: NixelQueue.ClsHeaderQueue, blIsVerify: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers public class ClsQueueManager {
+  public class var shared: NixelQueue.ClsQueueManager {
+    get
+  }
+  public class func destroySingletonInstance()
+  public var queueLogic: NixelQueue.ClsQueueLogic?
+  weak public var delegate: NixelQueue.QueueManagerDelegate?
+  public var strPathUrl: Foundation.NSString
+  @objc deinit
+  public func initializeQueueLogic(strPathUrl: Foundation.NSString, strMemberIdDirPath: Swift.String, strBaseUrl: Swift.String, strSessionId: Swift.String)
+  public func handleObject(headerQueue: NixelQueue.ClsHeaderQueue)
+  public func doDirectOperation(headerQueue: NixelQueue.ClsHeaderQueue)
+  public func setInternetValue(value: Swift.Int)
+  public func setQueueManagerDelegate(to delegate: NixelQueue.QueueManagerDelegate?)
+  public func startQueue()
+  public func getQueueItems(isFile: Swift.Bool) -> [NixelQueue.ClsHeaderQueue]
+}
+extension ClsQueueManager : NixelQueue.ClsQueueLogicDelegate {
+  public func onOperationResult(objResponseDict: Foundation.NSDictionary, objHeaderQueue: NixelQueue.ClsHeaderQueue, blIsVerify: Swift.Bool)
+}
+@objc public class ClsFileUpload : ObjectiveC.NSObject {
+  public var strFileKey: Swift.String?
+  public var strFilePath: Swift.String?
+  public var strFileName: Swift.String?
+  public func encode(with aCoder: Foundation.NSCoder)
+  required public init?(coder aDecoder: Foundation.NSCoder)
+  public init(strFileKey: Swift.String, strFilePath: Swift.String, strFileName: Swift.String)
+  public func getStrFileKey() -> Swift.String
+  public func setStrFileKey(strFileKey: Swift.String)
+  public func getStrFilePath() -> Swift.String
+  public func setStrFilePath(strFilePath: Swift.String)
+  public func getStrFileName() -> Swift.String
+  public func setStrFileName(strFileName: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ClsApiCall : ObjectiveC.NSObject {
+  public func postRequest(strBaseUrl: Swift.String, strApiName: Swift.String, strSessionId: Swift.String, params: [Swift.String : Any], completion: @escaping (Foundation.NSDictionary, Foundation.NSError?) -> Swift.Void)
+  public func postRequest(strBaseUrl: Swift.String, strApiName: Swift.String, params: [Swift.String : Any], completion: @escaping (Foundation.NSDictionary, Foundation.NSError?) -> Swift.Void)
+  public func uploadFile(strBaseUrl: Swift.String, strApiName: Swift.String, strSessionId: Swift.String, params: Foundation.NSDictionary?, strFilePath: Swift.String?, strFileName: Swift.String, completion: @escaping (Foundation.NSDictionary, Foundation.NSError?) -> Swift.Void)
+  public func uploadFiles(strBaseUrl: Swift.String, strApiName: Swift.String, strSessionId: Swift.String, params: Foundation.NSDictionary?, arrFiles: [NixelQueue.ClsFileUpload], completion: @escaping (Foundation.NSDictionary, Foundation.NSError?) -> Swift.Void)
+  public func getCorrectedFilePath(strFilePath: Swift.String) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol ClsQueueLogicDelegate : AnyObject {
+  func onOperationResult(objResponseDict: Foundation.NSDictionary, objHeaderQueue: NixelQueue.ClsHeaderQueue, blIsVerify: Swift.Bool)
+}
+public class ClsQueueLogic {
+  public var arrHeaderQueue: [NixelQueue.ClsHeaderQueue]
+  public var arrHeaderQueueFiles: [NixelQueue.ClsHeaderQueue]
+  public static var intInternet: Swift.Int
+  public init(objQueueLogicDelegate: NixelQueue.ClsQueueLogicDelegate, strPathUrl: Foundation.NSString, strMemberIdDirPath: Swift.String, strBaseUrl: Swift.String, strSessionId: Swift.String)
+  public func initialize()
+  public static func getIntInternet() -> Swift.Int
+  public static func setIntInternet(Internet: Swift.Int)
+  public func initQueueLogicDelegate(objQueueLogicDelegate: NixelQueue.ClsQueueLogicDelegate)
+  public func setStrPathUrl(strPathUrl: Foundation.NSString)
+  public func setStrMemberIdDirPath(strMemberIdDirPath: Swift.String)
+  public func setStrBaseUrl(strBaseUrl: Swift.String)
+  public func setStrSessionId(strSessionId: Swift.String)
+  public func handleObject(objHeaderQueue: NixelQueue.ClsHeaderQueue)
+  public func handleForFileUploading(objHeaderQueue: NixelQueue.ClsHeaderQueue)
+  public func processQueue()
+  public func verifyOperation(objHeaderQueue: NixelQueue.ClsHeaderQueue)
+  public func doOperation(objHeaderQueue: NixelQueue.ClsHeaderQueue)
+  public func onOperationResult(objHeaderQueue: NixelQueue.ClsHeaderQueue, objResponseDict: Foundation.NSDictionary, blIsVerify: Swift.Bool)
+  public func doOperationDirect(objHeaderQueue: NixelQueue.ClsHeaderQueue)
+  public func doFileUpload(objHeaderQueue: NixelQueue.ClsHeaderQueue)
+  public func readQueueDataFromFile(strFilePath: Swift.String) -> Any?
+  public func writeQueueDataToFile(objAny: Any, strFilePath: Swift.String)
+  public func fileCheckAtPath(strFilePath: Swift.String) -> Swift.Bool
+  public func createFolder(strDirPath: Swift.String)
+  public func getFileNameFromFilePath(strFilePath: Swift.String) -> Swift.String
+  public func copyFile(strFromPath: Swift.String, strToPath: Swift.String)
+  public func copyFile2(strFromPath: Swift.String, strToPath: Swift.String)
+  public func deleteItem(strFilePath: Swift.String)
+  public func getArrHeaderQueueData(blIsFile: Swift.Bool) -> [NixelQueue.ClsHeaderQueue]
+  public func getArrHeaderQueue() -> [NixelQueue.ClsHeaderQueue]
+  public func getArrHeaderQueueFiles() -> [NixelQueue.ClsHeaderQueue]
+  @objc deinit
+}
